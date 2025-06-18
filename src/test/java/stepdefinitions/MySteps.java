@@ -21,16 +21,16 @@ public class MySteps {
     @Given("The user is on the homepage")
     public void the_user_is_on_the_homepage() {
         Driver.getDriver().get("https://www.trendyol.com/");
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(30));
         wait.until(webDriver -> ((JavascriptExecutor) webDriver)
                 .executeScript("return document.readyState").equals("complete"));
 
     }
     @When("The user searches for {string}")
     public void the_user_searches_for(String string) {
-        ReusableMethods.waitForClickablility(page.cookies,10);
+        ReusableMethods.waitForClickablility(page.cookies,30);
         page.cookies.click();
-        ReusableMethods.waitForClickablility(page.searchBox,10);
+        ReusableMethods.waitForClickablility(page.searchBox,30);
         page.searchBox.sendKeys(string, Keys.ENTER);
 
     }
@@ -47,20 +47,20 @@ public class MySteps {
         String expectedText = "Sepetim (1 Ürün)";
         ReusableMethods.clickByJavaScript(page.myBasketButton);
         try {
-            ReusableMethods.waitForClickablility(page.alert,10);
+            ReusableMethods.waitForClickablility(page.alert,30);
             page.alert.click();
         }catch (Exception e){
 
         }
 
-        ReusableMethods.visibleWait(page.basketHeadText,10);
+        ReusableMethods.visibleWait(page.basketHeadText,30);
         String actualText = page.basketHeadText.getText();
         Assert.assertEquals(expectedText,actualText);
 
     }
     @When("The user removes the product from the cart")
     public void the_user_removes_the_product_from_the_cart() {
-        ReusableMethods.waitForClickablility(page.deleteButton,10);
+        ReusableMethods.waitForClickablility(page.deleteButton,30);
         page.deleteButton.click();
 
 
@@ -68,7 +68,7 @@ public class MySteps {
     }
     @Then("The product should no longer be in the cart")
     public void the_product_should_no_longer_be_in_the_cart() {
-        ReusableMethods.visibleWait(page.basketHeadText,10);
+        ReusableMethods.visibleWait(page.basketHeadText,30);
         String expectedText = "Sepetim";
         String actualText = page.basketHeadText.getText();
         Assert.assertEquals(expectedText,actualText);
