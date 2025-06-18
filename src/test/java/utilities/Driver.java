@@ -20,7 +20,10 @@ public class Driver {
                 case "chrome":
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--remote-allow-origins=*");
-                    // chromeOptions.addArguments("--headless"); // Headless test için opsiyonel
+//                    chromeOptions.addArguments("--headless=new"); // yeni headless modu
+//                    chromeOptions.addArguments("--disable-gpu");
+//                    chromeOptions.addArguments("--window-size=1920,1080");
+//                    chromeOptions.addArguments("--remote-allow-origins=*");// Headless test için opsiyonel
                     driver = new ChromeDriver(chromeOptions);
                     break;
 
@@ -32,6 +35,9 @@ public class Driver {
 
                 default:
                     ChromeOptions defaultOptions = new ChromeOptions();
+                    defaultOptions.addArguments("--headless=new");
+                    defaultOptions.addArguments("--window-size=1920,1080");
+                    defaultOptions.addArguments("--disable-gpu");
                     defaultOptions.addArguments("--remote-allow-origins=*");
                     driver = new ChromeDriver(defaultOptions);
                     break;

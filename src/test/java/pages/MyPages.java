@@ -25,4 +25,6 @@ public class MyPages {
     public WebElement cookies;
     @FindBy (xpath = "//div[@class='tooltip-content']//child::button")
     public WebElement alert;
+    @FindBy (css = "div[class='go-to-basket-text']")
+    public WebElement newBasket;
 }
